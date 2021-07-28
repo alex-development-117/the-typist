@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route, useHistory} from "react-router-dom";
+
 import Game from "./Game/Game";
+import UserLogin from "./User/UserLogin";
 import "./App.scss";
 
 const App = () => {
-  const [page, setPage] = useState("GAME");
+  const history = useHistory();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    history.push('/play')
+  }, []);
 
-  if (page === "GAME") {
-    return <Game/>;
- }
-
-  return <div>Error 404</div>;
+  return (
+    <Switch>
+      <Route exact path="/play" component={() => <Game  title={"Hi"}/>}></Route>
+      <Route exact path="/login" component={UserLogin}></Route>
+    </Switch>
+  );
 };
 
 export default App;
