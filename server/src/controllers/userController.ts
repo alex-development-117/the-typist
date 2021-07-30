@@ -27,10 +27,7 @@ user.create = async (req:any, res:any) => {
                 return res.json({errorMessage: 'The user exists already'});
             }
             
-            
         });
-
-       
 
     });
 }

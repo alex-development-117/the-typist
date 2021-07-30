@@ -1,0 +1,61 @@
+.user-card {
+  display: flex;
+  width: 90%;
+  min-height: 100px;
+  height: 100px;
+  border: 1px solid #e5e5e5;
+  margin: 10px;
+  .id-container {
+    border: 1px solid #e5e5e5;
+    width: 10%;
+    height: 100%;
+  }
+  .name-container {
+    border: 1px solid #e5e5e5;
+    width: 50%;
+    height: 100%;
+  }
+  .rol-container {
+    border: 1px solid #e5e5e5;
+    width: 20%;
+    height: 100%;
+  }
+  .buttons-container {
+    border: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    .button {
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      height: 45%;
+      color: white;
+      border-radius: 0;
+      transition-property: background-color;
+      transition-duration: 0.5s;
+      margin: 1px;
+      cursor: pointer;
+    }
+    .button.delete {
+      border: 1px solid #a93b00;
+      background-color: #e53b00;
+    }
+    .button.delete:hover {
+      border: 1px solid #a93b00;
+      background-color: #a93b00;
+    }
+    .button.edit {
+      border: 1px solid #09920d;
+      background-color: #09a20d;
+    }
+    .button.edit:hover {
+      border: 1px solid #09920d;
+      background-color: #09920d;
+    }
+  }
+}

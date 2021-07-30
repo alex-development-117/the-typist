@@ -29,6 +29,10 @@
     flex-direction: column;
 }
 
+.text-s{
+    font-size: 14px;
+}
+
 .group{
     display: flex;
     height: 30px;
@@ -57,9 +61,21 @@
         outline: none;
     }
 }
+form{
+    button{
+        padding: 10px 10px 10px 10px;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        box-shadow: 0px 4px 5px -1px rgb(0, 0, 0, 0.1);
+        background-color: #0B5ABB;
+        color: white;
+    }
+}
+
 
 .link{
     cursor: pointer;
     color: blue;
     text-decoration: underline;
+    margin: 0px  0px 10px 5px;
 }
