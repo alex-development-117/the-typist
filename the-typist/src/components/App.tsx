@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Game from "./Game/Game";
 import UserLogin from "./User/UserLogin";
@@ -47,6 +49,7 @@ const App = () => {
         <Route exact path="/register" component={UserRegister}></Route>
         <Route exact path="/adminUsers" component={AdminUsers}></Route>
       </Switch>
+      <ToastContainer/>
     </Provider>
   );
 };

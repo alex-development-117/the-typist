@@ -27,18 +27,19 @@ const Gameplay = () => {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => keyDownCallback(e));
+    document.addEventListener("keydown", (e) => keyDownCallback(e));
 
     return () => {
-      window.removeEventListener("keydown", (e) => keyDownCallback(e));
+      document.removeEventListener("keydown", (e) => keyDownCallback(e));
     }
   }, [keyDownCallback]);
 
 
+
   useEffect(() => {
     return () => {
-      console.log("Destruyendo");
-    };
+      document.removeEventListener("keydown", (e) => keyDownCallback(e));
+    }
   }, []);
 
   return (

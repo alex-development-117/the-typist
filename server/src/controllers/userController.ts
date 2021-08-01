@@ -21,12 +21,11 @@ user.create = async (req:any, res:any) => {
             if(user[0]['Count(*)']===0){
                  conn.query(`INSERT INTO User (name, rol,password) VALUES("${name}", "USER","${password}");`, (err:any, user:any) =>{
                     if(err)return err;
-                    res.json(req.body);
+                    res.json({message: 'The user was created successfully'});
                 });
             }else{
-                return res.json({errorMessage: 'The user exists already'});
+                return res.json({errorMessage: 'The user already exist'});
             }
-            
         });
 
     });
@@ -69,11 +68,39 @@ user.login =(req:any, res:any) => {
 }
 
 user.update = (req:any, res:any) => {
-    res.send('Updating');
+    const {id, name, rol} = req.body
+    console.log(req.body);
+    
+    req.getConnection(async (err:any, conn:any) => {
+        if(err)return err;
+        conn.query(`SELECT Count(*) FROM User WHERE name="${name}"`, (err:any, count:any) =>{
+            if(err)res.json(err);
+            count = JSON.stringify(count);
+            count = JSON.parse(count);
+            if(count[0]['Count(*)']===0){
+                conn.query(`UPDATE User SET name='${name}', rol='${rol}' WHERE id=${id}`, (err:any, user:any) =>{
+                    if(err)res.json(err);
+                    res.json(user);
+                });
+            }else{
+                res.json({errorMessage: `The username ${name}, already exists`});
+            }
+        });
+        
+
+    });
 }
 
 user.delete = (req:any, res:any) => {
-    res.send('Deleting');
+    const {id} = req.params
+    console.log(id);
+    req.getConnection( (err:any, conn:any) => {
+        conn.query(`DELETE FROM User WHERE id=${id}`, (err:any, user:any) =>{
+            console.log(user);
+            
+            res.json(user);
+        });
+    });
 }
 
 module.exports = user;

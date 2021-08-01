@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useHistory} from "react-router-dom";
 import API from '../../api/request'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import "./User.scss";
 import UnloggedBackground from './UnloggedBackground';
 
 const UserLogin = (props: any) => {
+
     const history = useHistory();
     const [user, setUser] = useState({name: '', password: ''});
-
+    useEffect(() => {
+    }, []);
 
     const submitUser = async (e:any) => {
         e.preventDefault();
@@ -16,8 +20,11 @@ const UserLogin = (props: any) => {
             API.post(API.host, '/user/login', user).then( res => {
                 let user = JSON.parse(JSON.stringify(res));
                 if(user.authenticated){
+                    (() => toast.success("Usuario autentificado!"))();                    
                     localStorage.setItem('user', JSON.stringify(user[0]));
-                    history.push('/play');
+                    setTimeout(() => history.push('/play'), 3000);
+                }else{
+                    (() => toast.error("El usuario o la contraseña son incorrectos"))();                    
                 }
             })
         }

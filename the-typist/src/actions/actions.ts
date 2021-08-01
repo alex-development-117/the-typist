@@ -1,4 +1,4 @@
-import { User } from '../../interfaces/user.interface';
+import { User } from '../interfaces/user.interface';
 
 export const ACTION_ADD_LOGGED_USER = (state:User) => {
 

@@ -1,13 +1,15 @@
-import React, { ChangeEventHandler, MouseEventHandler, useState } from "react";
+import React, {useState } from "react";
 import UnloggedBackground from "./UnloggedBackground";
 import "./User.scss";
 import { User } from "../../interfaces/user.interface";
 import API from "../../api/request";
 import { useHistory } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const UserRegister = () => {
   const history = useHistory();
-
 
   const [newUser, setNewUser] = useState<User>({
     name: "",
@@ -42,8 +44,14 @@ const UserRegister = () => {
     event.preventDefault();
     if((newUser.name.length && newUser.password.length) > 0 && (newUser.password === confirmPassword)){
       API.post(API.host, '/user/post', newUser).then( res => {
-        localStorage.setItem('user', JSON.stringify(newUser));
-        history.push('play');
+        let response = JSON.parse(JSON.stringify(res));
+        if(response.errorMessage){
+          (() => toast.error(response.errorMessage))();
+        }else{
+          (() => toast.success("User created successfully"))();
+          // localStorage.setItem('user', JSON.stringify(newUser));
+          // history.push('/play');
+        }
       });
     }
   };
