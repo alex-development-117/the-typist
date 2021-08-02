@@ -5,10 +5,10 @@ import './Gameplay.scss'
 const Gameplay = (props:any) => {
   const [write, setWrite] = useState<string>("");
 
-  const keyDownCallback = useCallback((e: KeyboardEvent) => {
-    console.log(e);
+  const keyDownCallback = useCallback((e) => {
     if (e.key.length === 1) {
-      setWrite((w) => w + e.key);
+      console.log(props.level);
+      evaluateString(write + e.key, props.level)?setWrite((w) => w += e.key):props.setErrors((e:number) => e+=1);
     }else{
       switch(e.key){
         case 'Backspace':
@@ -23,20 +23,19 @@ const Gameplay = (props:any) => {
           break;
       }
     }
-    console.log(write);
     
-  }, []);
+  }, [write]);
+
+  const evaluateString = (userString:string, levelString:string):boolean => {
+    return userString===levelString.slice(0, userString.length)?true:false;
+  }
 
   useEffect(() => {
-    window.addEventListener("keydown", (e) => keyDownCallback(e));
 
-    return () => {
-      window.removeEventListener("keydown", (e) => keyDownCallback(e));
-    }
-  }, [keyDownCallback]);
+  }, []);
 
   return (
-    <div id="gameplay" className="gameplay">
+    <div onKeyDown={(e) => {keyDownCallback(e)}} tabIndex={0} id="gameplay" className="gameplay">
       <div className="container-code">
         <div className="good">{write}</div><div className="level">{props.level.slice(write.length, props.level.length)}</div>
       </div>

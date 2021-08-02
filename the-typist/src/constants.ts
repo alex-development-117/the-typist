@@ -1,6 +1,3 @@
-import React from "react"
-import {useHistory} from "react-router-dom"
-
 const getPathByRol = (rol:string):string => {
     return rol==='USER'?'/play':'/adminUsers'
 }
