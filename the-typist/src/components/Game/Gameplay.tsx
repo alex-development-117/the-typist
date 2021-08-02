@@ -24,7 +24,7 @@ const Gameplay = () => {
     }
     console.log(write);
     
-  }, []);
+  }, [write]);
 
   useEffect(() => {
     document.addEventListener("keydown", (e) => keyDownCallback(e));

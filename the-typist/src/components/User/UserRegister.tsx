@@ -4,7 +4,7 @@ import "./User.scss";
 import { User } from "../../interfaces/user.interface";
 import API from "../../api/request";
 import { useHistory } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -49,8 +49,8 @@ const UserRegister = () => {
           (() => toast.error(response.errorMessage))();
         }else{
           (() => toast.success("User created successfully"))();
-          // localStorage.setItem('user', JSON.stringify(newUser));
-          // history.push('/play');
+          localStorage.setItem('user', JSON.stringify(newUser));
+          history.push('/play');
         }
       });
     }

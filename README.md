@@ -9,4 +9,12 @@ _In the repo are two folders, one for the server and other for the react app, in
     npm install
 ```
 
+_To run each server use:_
+
+```
+    npm start
+```
+
+
+
 

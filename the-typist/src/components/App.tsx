@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Game from "./Game/Game";
@@ -19,9 +19,8 @@ const App = () => {
   useEffect(() => {
     let userStorage = JSON.parse(String(localStorage.getItem("user")));
     if (!userStorage) {
-      if (false
-        // history.location.pathname !== "/login"  &&
-        // history.location.pathname !== "/register"
+      if (history.location.pathname !== "/login"  &&
+          history.location.pathname !== "/register"
       ) {
         history.push("/login");
       }
@@ -35,7 +34,7 @@ const App = () => {
           break;
       }
     }
-  }, []);
+  }, [history]);
 
   return (
     <Provider store={store}>
