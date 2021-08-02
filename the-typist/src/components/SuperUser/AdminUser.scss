@@ -22,13 +22,41 @@
 
 .option{
     width: 100%;
-    height: 40px;
+    height: 60px;
     border-bottom: 1px solid #e5e5e5;
     display: flex;
+    color: #555555;
+    cursor: pointer;
+    transition-property: background-color color;
+    transition-duration: 0.5s;
     .icon{
-        
+        width: 30%;
+        height: 100%;
+        border-right: 1px solid #f0f0f0;
     }
     .title{
-
+        width: 70%;
+        height: 100%;
+        padding-left: 20px;
+        justify-content: flex-start !important;
     }
+}
+.option.active{
+    background-color: #157AC1;
+    color: #fff;
+    border-bottom: 1px solid #555555;
+    .icon{
+        border-right: 1px solid #555555;
+    }
+
+}
+
+.option:hover{
+    background-color: #1574B6;
+    color: #fff;
+    border-bottom: 1px solid #555555;
+    .icon{
+        border-right: 1px solid #555555;
+    }
+
 }

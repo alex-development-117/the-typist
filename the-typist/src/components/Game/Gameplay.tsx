@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
 
 const Gameplay = () => {
+  const levelDemo = 'class Hola {\n}';
   const [write, setWrite] = useState("");
 
   const keyDownCallback = useCallback((e: KeyboardEvent) => {
@@ -24,27 +25,19 @@ const Gameplay = () => {
     }
     console.log(write);
     
-  }, [write]);
+  }, []);
 
   useEffect(() => {
-    document.addEventListener("keydown", (e) => keyDownCallback(e));
+    window.addEventListener("keydown", (e) => keyDownCallback(e));
 
     return () => {
-      document.removeEventListener("keydown", (e) => keyDownCallback(e));
+      window.removeEventListener("keydown", (e) => keyDownCallback(e));
     }
   }, [keyDownCallback]);
 
-
-
-  useEffect(() => {
-    return () => {
-      document.removeEventListener("keydown", (e) => keyDownCallback(e));
-    }
-  }, []);
-
   return (
     <div id="gameplay" className="gameplay">
-      {write}
+      {levelDemo}
     </div>
   );
 };

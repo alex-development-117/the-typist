@@ -25,14 +25,8 @@ const App = () => {
         history.push("/login");
       }
     } else {
-      switch (userStorage.rol) {
-        case "USER":
-          history.push("/play");
-          break;
-        case "ADMIN":
-          history.push("/adminUsers");
-          break;
-      }
+      const PATH = userStorage.rol==='USER'?'/play':'adminUsers';
+      history.push(PATH);
     }
   }, [history]);
 

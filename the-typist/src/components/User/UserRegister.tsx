@@ -46,9 +46,9 @@ const UserRegister = () => {
       API.post(API.host, '/user/post', newUser).then( res => {
         let response = JSON.parse(JSON.stringify(res));
         if(response.errorMessage){
-          (() => toast.error(response.errorMessage))();
+          toast.error(response.errorMessage);
         }else{
-          (() => toast.success("User created successfully"))();
+          toast.success("User created successfully");
           localStorage.setItem('user', JSON.stringify(newUser));
           history.push('/play');
         }

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory} from "react-router-dom";
 import API from '../../api/request'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import "./User.scss";
 import UnloggedBackground from './UnloggedBackground';
+import constants from "../../constants";
 
 const UserLogin = (props: any) => {
 
@@ -20,11 +21,11 @@ const UserLogin = (props: any) => {
             API.post(API.host, '/user/login', user).then( res => {
                 let user = JSON.parse(JSON.stringify(res));
                 if(user.authenticated){
-                    (() => toast.success("Usuario autentificado!"))();                    
+                    toast.success(constants.USER_LOGIN_AUTHENTICATED);                    
                     localStorage.setItem('user', JSON.stringify(user[0]));
-                    setTimeout(() => history.push('/play'), 3000);
+                    setTimeout(() => history.push(constants.getPathByRol(user[0].rol)), 3000);
                 }else{
-                    (() => toast.error("El usuario o la contraseña son incorrectos"))();                    
+                    toast.error(constants.USER_LOGIN_REJECTED);                    
                 }
             })
         }
