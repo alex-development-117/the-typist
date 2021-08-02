@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LevelConfiguration from "./LevelConfiguration";
 import Gameplay from './Gameplay';
 import LevelStats from './LevelStats';
@@ -6,13 +6,15 @@ import './Game.scss'
 
 const Game = (props:any) => {
 
+  const [numberErrors, setNumberErrors] = useState<number>(0);
+  const level = 'class Hola extends React.Component{}';
 
     return (
         <div id="game-layout" className="game-layout">
             <LevelConfiguration/>
             <div className="right-side">
-                <LevelStats/>
-                <Gameplay/>
+                <LevelStats errors={numberErrors}/>
+                <Gameplay level={level} setErrors={setNumberErrors}/>
             </div>
         </div>
     );

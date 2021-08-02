@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useCallback } from "react";
+import './Gameplay.scss'
 
-const Gameplay = () => {
-  const levelDemo = 'class Hola {\n}';
-  const [write, setWrite] = useState("");
+const Gameplay = (props:any) => {
+  const [write, setWrite] = useState<string>("");
 
   const keyDownCallback = useCallback((e: KeyboardEvent) => {
     console.log(e);
@@ -37,7 +37,9 @@ const Gameplay = () => {
 
   return (
     <div id="gameplay" className="gameplay">
-      {levelDemo}
+      <div className="container-code">
+        <div className="good">{write}</div><div className="level">{props.level.slice(write.length, props.level.length)}</div>
+      </div>
     </div>
   );
 };

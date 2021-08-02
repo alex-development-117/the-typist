@@ -5,7 +5,7 @@ const LevelConfiguration = () => {
 
 
     return (
-        <div className="level-configuration">Level Configuration!</div>
+        <div className="level-configuration"></div>
     );
 }
 
