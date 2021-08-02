@@ -3,12 +3,13 @@ import { useCallback } from "react";
 import './Gameplay.scss'
 
 const Gameplay = (props:any) => {
+  const POINTS_PER_CORRECT_VALUE = 50;
+  const POINTS_PER_INCORRECT_VALUE = 50;
   const [write, setWrite] = useState<string>("");
 
-  const keyDownCallback = useCallback((e) => {
+  const keyDownCallback = (e:any) => {
     if (e.key.length === 1) {
-      console.log(props.level);
-      evaluateString(write + e.key, props.level)?setWrite((w) => w += e.key):props.setErrors((e:number) => e+=1);
+      evaluateString(write + e.key, props.level)?isCorrectValue(true, e.key):isCorrectValue(false);
     }else{
       switch(e.key){
         case 'Backspace':
@@ -24,15 +25,21 @@ const Gameplay = (props:any) => {
       }
     }
     
-  }, [write]);
+  }
+
+  const isCorrectValue = (isCorrect:boolean, letter?:string) => {
+    if(isCorrect){
+      setWrite((w) => w += letter);
+      props.setScore((s:number) => s+=POINTS_PER_CORRECT_VALUE);
+    }else{
+      props.setErrors((e:number) => e+=1)
+      props.setScore((s:number) => s-=POINTS_PER_INCORRECT_VALUE);
+    }
+  }
 
   const evaluateString = (userString:string, levelString:string):boolean => {
     return userString===levelString.slice(0, userString.length)?true:false;
   }
-
-  useEffect(() => {
-
-  }, []);
 
   return (
     <div onKeyDown={(e) => {keyDownCallback(e)}} tabIndex={0} id="gameplay" className="gameplay">
