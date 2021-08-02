@@ -14,13 +14,14 @@ const Gameplay = (props:any) => {
       switch(e.key){
         case 'Backspace':
           setWrite((w) => w.slice(0, w.length - 1));
+          props.setScore((s:number)=> s-= POINTS_PER_CORRECT_VALUE);
           break;
         case 'Enter':
           setWrite((w) => w + "\n");
           break;
         case 'Tab':
-          setWrite((w) => w + "\t");
           e.preventDefault();
+          setWrite((w) => w + "\t");
           break;
       }
     }
@@ -41,8 +42,21 @@ const Gameplay = (props:any) => {
     return userString===levelString.slice(0, userString.length)?true:false;
   }
 
+  const handleOnClickStartGame = () => {
+    const timer = setInterval(() => {
+      props.setTime((t:any)=> {
+        console.log(t);
+        if(t===0){
+          clearInterval(timer)
+          return t;
+        }
+        return t-=100
+      });
+    },100)
+  }
+
   return (
-    <div onKeyDown={(e) => {keyDownCallback(e)}} tabIndex={0} id="gameplay" className="gameplay">
+    <div onKeyDown={(e) => {keyDownCallback(e)}} onClick={handleOnClickStartGame} tabIndex={0} id="gameplay" className="gameplay">
       <div className="container-code">
         <div className="good">{write}</div><div className="level">{props.level.slice(write.length, props.level.length)}</div>
       </div>

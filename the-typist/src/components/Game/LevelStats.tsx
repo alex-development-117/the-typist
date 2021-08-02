@@ -11,7 +11,7 @@ const LevelStats = (props:any) => {
         <div className="level-stats">
             <div className="total-score center">Score: {props.score}</div>
             <div className="total-score center">Errors: {props.errors}</div>
-            <div className="total-score center">Time: 9:54s</div>
+            <div className="total-score center">Time: {props.time/1000}s</div>
         </div>
     );
 
