@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useCallback } from "react";
 import "./Gameplay.scss";
 
 const Gameplay = (props: any) => {
@@ -58,8 +57,10 @@ const Gameplay = (props: any) => {
   };
 
   const renderStartEndGame = () => {
-    if(write==props.level){
-      return <div>Nivel completado</div>
+    if(write===props.level){
+      return (
+        <div>Nivel completado</div>
+      );
     }else{
       return (
         <div className="container-code">
