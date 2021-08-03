@@ -3,10 +3,6 @@ import './LevelStats.scss'
 
 const LevelStats = (props:any) => {
 
-    useEffect(() => {
-
-    }, [props.score]);
-
     return (
         <div className="level-stats">
             <div className="total-score center">Score: {props.score}</div>
@@ -14,7 +10,6 @@ const LevelStats = (props:any) => {
             <div className="total-score center">Time: {props.time/1000}s</div>
         </div>
     );
-
 }
 
 export default LevelStats;

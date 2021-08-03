@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LevelConfiguration from "./LevelConfiguration";
 import Gameplay from "./Gameplay";
 import LevelStats from "./LevelStats";
 import "./Game.scss";
 
 const Game = (props: any) => {
-  const TIMER = 10;
+  const TIMER = 10_000;
   const [numberErrors, setNumberErrors] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
-  const [time, setTime] = useState<number>(10_000);
+  const [time, setTime] = useState<number>(TIMER);
   const level = "class Hola extends React.Component{}";
-
 
 
   return (
@@ -23,6 +22,7 @@ const Game = (props: any) => {
           setScore={setScore}
           setErrors={setNumberErrors}
           setTime={setTime}
+          time={time}
         />
       </div>
     </div>
