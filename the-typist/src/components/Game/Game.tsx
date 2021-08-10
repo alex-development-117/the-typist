@@ -9,16 +9,17 @@ const Game = (props: any) => {
   const [numberErrors, setNumberErrors] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
   const [time, setTime] = useState<number>(TIMER);
-  const level = "class Hola extends React.Component{}";
-
+  const [generalConfiguration, setGeneralConfiguration] = useState({
+    levelSelected: null
+  });
 
   return (
     <div id="game-layout" className="game-layout">
-      <LevelConfiguration />
+      <LevelConfiguration configuration={generalConfiguration} setConfiguration={setGeneralConfiguration}/>
       <div className="right-side">
         <LevelStats score={score} errors={numberErrors} time={time}/>
         <Gameplay
-          level={level}
+          level={"generalConfiguration.levelSelected"}
           setScore={setScore}
           setErrors={setNumberErrors}
           setTime={setTime}

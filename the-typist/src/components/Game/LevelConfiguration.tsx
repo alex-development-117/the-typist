@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { OptionsMenu } from "../../interfaces/optionsMenu.interface";
 import DropDownItem from "./DropDownItem";
+import SelectLevel from "./ContentMenuOptions/SelectLevel";
 
-const LevelConfiguration = () => {
+const LevelConfiguration = (props: any) => {
+
+    // const [levelSelected, setLevelSelected] = useState(props.config.levelSelected);
+
   const optionsMenu: OptionsMenu[] = [
     {
       id: 0,
@@ -30,9 +34,23 @@ const LevelConfiguration = () => {
     },
   ];
 
+  const selectContent = (optionId: number) => {
+    if (optionId === 0) {
+      return <SelectLevel />;
+    } else if (optionId === 1) {
+      return <SelectLevel />;
+    }
+  };
+
   return (
     <div className="level-configuration">
-      {optionsMenu.map((option) => <DropDownItem key={option.id} option={option}/>)}
+      {optionsMenu.map((option) => {
+        return (
+          <DropDownItem key={option.id} option={option}>
+            {selectContent(option.id)}
+          </DropDownItem>
+        );
+      })}
     </div>
   );
 };

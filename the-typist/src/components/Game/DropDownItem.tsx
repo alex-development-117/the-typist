@@ -4,7 +4,7 @@ import { OptionsMenu } from '../../interfaces/optionsMenu.interface';
 import './DropDownItem.scss';
 
 
-const DropDownMenu = (props:any) => {
+const DropDownItem = (props:any) => {
 
     const [isOpen, setIsOpen] = useState<boolean>(props.option.open);
 
@@ -15,10 +15,10 @@ const DropDownMenu = (props:any) => {
                 <div className="title">{props.option.name}</div>
             </div>
             <div className={`content-item ${isOpen?'open':''}`}>
-                
+                {props.children}
             </div>
         </div>
     );
 }
 
-export default DropDownMenu;
+export default DropDownItem;

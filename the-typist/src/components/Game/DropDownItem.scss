@@ -32,13 +32,17 @@
     animation-name: contentClose;
     animation-iteration-count: 1;
     animation-direction: normal;
+    border-bottom: 0px solid #e5e5e5;
+    opacity: 0;
   }
-  .content-item.open{
-    height: 100px;
+  .content-item.open {
+    height: 200px;
     animation-duration: 1s;
     animation-name: contentExpands;
     animation-iteration-count: 1;
     animation-direction: normal;
+    border-bottom: 1px solid #e5e5e5;
+    opacity: 1;
   }
 
   .header-item:hover {
@@ -49,19 +53,23 @@
   }
 
   @keyframes contentExpands {
-      from{
-          height: 0px;
-      }
-      to{
-          height: 100px;
-      }
+    from {
+      height: 0px;
+      opacity: 0;
+    }
+    to {
+      height: 200px;
+      opacity: 1;
+    }
   }
   @keyframes contentClose {
-    from{
-        height: 100px;
+    from {
+      height: 200px;
+      opacity: 1;
     }
-    to{
-        height: 0px;
+    to {
+      height: 0px;
+      opacity: 0;
     }
-}
+  }
 }

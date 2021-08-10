@@ -4,4 +4,5 @@ export default interface CRUD {
     update:Function | null;
     delete:Function | null;
     login?:Function | null;
+    sqlConnection?:any;
 }
