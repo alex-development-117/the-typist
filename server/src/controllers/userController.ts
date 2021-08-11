@@ -63,9 +63,9 @@ user.login =(req:any, res:any) => {
 
 user.update = (req:any, res:any) => {
     const {id, name, rol} = req.body
-    sqlConnection.update(req, res, 'User', `name="${name}"`, `name="${name}", rol="${rol}"`, true);
+    sqlConnection.update(req, res, 'User', `id="${id}"`, `name="${name}", rol="${rol}"`);
 }
 
 user.delete = (req:any, res:any) => sqlConnection.remove(req, res, 'User', `id=${req.params.id}`);
-
+  
 module.exports = user;

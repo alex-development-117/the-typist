@@ -23,10 +23,12 @@ const insert = (req:any, res:any, FROM:string, WHERE:string, KEYS:string, VALUES
             query = JSON.stringify(query);
             query = JSON.parse(query);
             if(query[0]['Count(*)']===0){
-                
+                conn.query(`INSERT INTO ${FROM} (${KEYS}) VALUES(${VALUES});`, (err:any, user:any) =>{
+                    if(err)return err;
+                    res.json({message: 'The user was created successfully'});
+                });
             }
         });
-
     })
 }
 
