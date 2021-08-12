@@ -19,7 +19,7 @@ const Game = (props: any) => {
       <div className="right-side">
         <LevelStats score={score} errors={numberErrors} time={time}/>
         <Gameplay
-          level={"generalConfiguration.levelSelected"}
+          level={generalConfiguration.levelSelected}
           setScore={setScore}
           setErrors={setNumberErrors}
           setTime={setTime}

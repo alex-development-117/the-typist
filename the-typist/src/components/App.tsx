@@ -39,7 +39,7 @@ const App = () => {
           component={() => <Game title={"Hi"} />}
         ></Route>
         <Route exact path="/login" component={UserLogin}></Route>
-        <Route exact path="/register" component={UserRegister}></Route>
+        <Route exact  path="/register" component={UserRegister}></Route>
         <Route exact path="/adminUsers" component={AdminUsers}></Route>
       </Switch>
       <ToastContainer/>

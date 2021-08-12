@@ -5,8 +5,6 @@ import SelectLevel from "./ContentMenuOptions/SelectLevel";
 
 const LevelConfiguration = (props: any) => {
 
-    // const [levelSelected, setLevelSelected] = useState(props.config.levelSelected);
-
   const optionsMenu: OptionsMenu[] = [
     {
       id: 0,
@@ -36,9 +34,9 @@ const LevelConfiguration = (props: any) => {
 
   const selectContent = (optionId: number) => {
     if (optionId === 0) {
-      return <SelectLevel />;
+      return <SelectLevel setConfiguration={props.setConfiguration}/>;
     } else if (optionId === 1) {
-      return <SelectLevel />;
+      return <SelectLevel setConfiguration={props.setConfiguration}/>;
     }
   };
 

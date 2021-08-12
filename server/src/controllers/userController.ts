@@ -37,7 +37,6 @@ user.read = (req:any, res:any) => sqlConnection.select(req, res, 'User', null , 
 
 user.login =(req:any, res:any) => {
     const {name, password} = req.body
-    console.log(req);
     req.getConnection( (err:any, conn:any) => {
         if(err)return err;
         conn.query(`SELECT Count(*) FROM User WHERE name = "${name}" AND password = "${password}"`, (err:any, user:any) =>{

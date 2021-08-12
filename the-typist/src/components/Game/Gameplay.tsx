@@ -6,7 +6,10 @@ const Gameplay = (props: any) => {
   const POINTS_PER_INCORRECT_VALUE = 50;
   const [write, setWrite] = useState<string>("");
 
+  // LOGIC
+
   const keyDownCallback = (e: any) => {
+    if(!props.level)return;
     if (e.key.length === 1) {
       evaluateString(write + e.key, props.level)
         ? isCorrectValue(true, e.key)
@@ -45,6 +48,7 @@ const Gameplay = (props: any) => {
   };
 
   const handleOnClickStartGame = () => {
+    if(!props.level)return;
     const timer = setInterval(() => {
       props.setTime((t: any) => {
         if (t === 0) {
@@ -56,21 +60,42 @@ const Gameplay = (props: any) => {
     }, 100);
   };
 
-  const renderStartEndGame = () => {
-    if(write===props.level){
-      return (
-        <div>Nivel completado</div>
-      );
-    }else{
-      return (
-        <div className="container-code">
+  // RENDERS
+
+  const renderPlayGame = () => {
+    return(
+      <div>Click to play game</div>
+    );
+  }
+
+  const renderWarningSelectLevel = () => {
+    return (
+      <div>Select a level first!</div>
+    );
+  }
+
+  const renderGameplay = () => {
+    return (
+      <div className="container-code">
           <div className="good">{write}</div>
           <div className="level">
             {props.level.slice(write.length, props.level.length)}
           </div>
-        </div>
-      );
+      </div>
+    );
+  }
+
+  const renderLevelCompleted = () => {
+    return <div>Nivel completado</div>
+  }
+
+  const renderStartEndGame = () => {
+    if(props.level){
+        return write===props.level
+        ?renderLevelCompleted()
+        :renderGameplay();
     }
+    return renderWarningSelectLevel();
   };
 
   return (
