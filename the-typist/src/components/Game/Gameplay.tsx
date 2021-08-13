@@ -11,7 +11,7 @@ const Gameplay = (props: any) => {
   const keyDownCallback = (e: any) => {
     if(!props.level)return;
     if (e.key.length === 1) {
-      evaluateString(write + e.key, props.level)
+      evaluateString(write + e.key, props.level.level)
         ? isCorrectValue(true, e.key)
         : isCorrectValue(false);
     } else {
@@ -78,8 +78,8 @@ const Gameplay = (props: any) => {
     return (
       <div className="container-code">
           <div className="good">{write}</div>
-          <div className="level">
-            {props.level.slice(write.length, props.level.length)}
+          <div className="level-code">
+            {props.level.level.slice(write.length, props.level.level.length)}
           </div>
       </div>
     );
